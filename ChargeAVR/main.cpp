@@ -21,9 +21,10 @@ IOPort portA(&PORTA, &PINA, &DDRA);
 int main(void)
 {
 	portA.SetPortDirection(0xFF);
-	uint8_t arrPins[]={0,PD0,PD2,PD3};
-	arrPins[0]=sizeof(arrPins);	
-	Button button(&PINA, &DDRA,arrPins);
+	
+	
+	
+	Button button(&PINA, &DDRA,3,PD1,PD2,PD3);
 	
 	
     /* Replace with your application code */
@@ -47,14 +48,4 @@ int main(void)
     }
 }
 
-void smth(volatile uint8_t number,uint8_t *pArr){
 
-		for (uint8_t i=0;i<number;i++)
-		{
-			portA.SetPortValues(pArr[i]);
-			_delay_ms(1000);
-		}
-	
-		
-		
-}
