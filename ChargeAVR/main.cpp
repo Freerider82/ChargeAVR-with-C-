@@ -17,18 +17,31 @@
 
 
 IOPort portA(&PORTA, &PINA, &DDRA);
+IOPort portB(&PORTB, &PINB, &DDRB);
+IOPort portC(&PORTC, &PINC, &DDRC);
 
 int main(void)
 {
 	portA.SetPortDirection(0xFF);
+	portB.SetPortDirection(0xFF);
+	portC.SetPortDirection(0xFF);
 	
-	
-	
-	Button button(&PINA, &DDRA,3,PD1,PD2,PD3);
+	Button button(&PIND, &DDRD,3,PD1,PD2,PD3);
 	
 	
     /* Replace with your application code */
 	
+	while(1){
+		
+		//portB.SetPortValues(button.getCurrentStatus());
+		//portC.SetPortValues(button.getPreviousStatus());
+		if(button.buttonWasPressed()){
+			portB.SetPortValues(button.getCurrentStatus());
+			portA.SetPortValues(button.getCodePressedButton());
+		} else{
+			
+		}
+	}
 	
 	
 	
@@ -36,8 +49,6 @@ int main(void)
 	
 	
 	
-	button.checkStatusButton();
-	button.checkStatusButton();
 	
 	
 	
